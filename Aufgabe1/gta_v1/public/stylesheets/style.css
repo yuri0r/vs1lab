@@ -25,12 +25,25 @@ body {
 }
 
 header {
+  color: #ffffff;
   background-color: #808080;
   padding: 10px;
 }
 
+footer {
+    color: #ffffff;
+    background-color: #808080;
+    padding: 10px;
+    margin-top: 20px;
+}
+
 a {
   color: #00B7FF;
+}
+
+#tag-form input, label {
+    display:block;
+    margin-bottom: 2px;
 }
 
 .tagging {
@@ -43,20 +56,48 @@ a {
 .discovery{
 	width: 75%;
 	float: left;
-	margin: 0px 0px 0px 0px
 }
 
-#results{
-
-}
-
-#result-img{
-  height: auto;
-  width: auto;
+#map_label {
+  text-align: right;
 }
 
 #filter-form {
   margin-bottom: 20px;
+}
+
+#button_apply{
+  float: left;
+  margin-left: 10px;
+}
+
+#button_remove{
+  float: left;
+  margin-left: 10px;
+}
+
+#prompt_search {
+  margin-left: 0px;
+  float: left;
+}
+
+.tagmap {
+  display: block;
+}
+#result-img{
+}
+
+#results li {
+  background-color: #37B6E5;
+  color: #ffffff;
+  margin-bottom: 5px;
+  padding: 3px;
+}
+
+#results {
+  padding: 0px 60px 0px 0px;
+  list-style-type: none;
+  margin: 0px;
 }
 
 
