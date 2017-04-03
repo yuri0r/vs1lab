@@ -82,8 +82,14 @@ a {
 }
 
 .tagmap {
-  display: block;
+  float: left;
+  width: 439px;
 }
+
+.tagmap div{
+  text-align: right;
+}
+
 #result-img{
 }
 
