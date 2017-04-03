@@ -31,16 +31,16 @@
                 <legend>Enter new GeoTag</legend>
 
                 <label for="prompt_latitude">latitude</label>
-                <input type="number" name="latitude" id="prompt_latitude" value="48.712312395434"><br>
+                <input type="number" name="latitude" id="prompt_latitude" value="48.712312395434" required><br>
 
                 <label for="prompt_longitude">longitude</label>
-                <input type="number" name="longitude" id="prompt_longitude" value="9.123545"><br>
+                <input type="number" name="longitude" id="prompt_longitude" value="9.123545" required><br>
 
                 <label for="prompt_name">name</label>
-                <input type="text" name="name" id="prompt_name" value="some name"><br>
+                <input type="text" name="name" id="prompt_name" value="some name" maxlength="10" required><br>
 
                 <label for="prompt_hashtag">hashtag</label>
-                <input type="text" name="hashtag" id="prompt_hashtag"  value="# + max. 10 letters"><br>
+                <input type="text" name="hashtag" id="prompt_hashtag"  value="# + max. 10 letters" pattern="#[a-zA-Z]+" maxlength="11"><br>
 
 				        <input type="submit" value="submit" id="button_sumbit">
             </fieldset>
