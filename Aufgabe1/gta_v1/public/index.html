@@ -26,6 +26,21 @@
 
 				<!-- ############### Aufgabe1a Form1 Start -->
 				<form id="tag-form" action="/tagging" method="post"></form>
+
+				<label for="prompt_latitude">latitude</label>
+				<input type="number" name="latitude" id="prompt_latitude" value="48.712312395434"><br>
+
+				<label for="prompt_longitude">longitude</label>
+				<input type="number" name="longitude" id="prompt_longitude" value="9.123545"><br>
+
+				<label for="prompt_name">name</label>
+				<input type="text" name="name" id="prompt_name" value="some name"><br>
+
+				<label for="prompt_hashtag">hashtag</label>
+				<input type="text" name="hashtag" id="prompt_hashtag"  value="# + max. 10 letters"><br>
+
+				<input type="submit" value="submit" id="button_sumbit">
+
 				<!-- ############### Aufgabe1a Form1 Ende -->
 
 			</section>
@@ -35,6 +50,12 @@
 
 				<!-- ############### Aufgabe1a Form2 Start -->
 				<form id="filter-form" action="/discovery" method="post"></form>
+
+				<input type="text" name="search" id="prompt_search" value="some term"><br>
+
+				<input type="submit" value="Apply" id="button_apply">
+
+				<input type="submit" value="Remove" id="button_remove">
 				<!-- ############### Aufgabe1a Form2 Ende -->
 
 				<div class="taglist">
