@@ -47,14 +47,13 @@ a {
 }
 
 .tagging {
-	width: 25%;
 	float: left;
 	
 	padding: 0px 30px 0px 0px
 }
 
+
 .discovery{
-	width: 75%;
 	float: left;
 }
 
@@ -83,7 +82,7 @@ a {
 
 .tagmap {
   float: left;
-  width: 439px;
+  max-width: 100%;
 }
 
 .tagmap div{
@@ -91,6 +90,7 @@ a {
 }
 
 #result-img{
+  max-width: 100%;
 }
 
 #results li {
@@ -101,7 +101,7 @@ a {
 }
 
 #results {
-  padding: 0px 60px 0px 0px;
+  padding: 0px 30px 0px 0px;
   list-style-type: none;
   margin: 0px;
 }
