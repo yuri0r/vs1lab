@@ -1,0 +1,2 @@
+api key staticmap google
+AIzaSyCQlxM8GV82o-z7zlThpZKrm7M3djBkPRA
