@@ -48,6 +48,15 @@ var gtaLocator = (function GtaLocator() {
         }
     };
 
+    function onError(msg) {
+        alert(msg);
+    }
+
+    function onSuccess(pos) {
+        document.getElementById("prompt_latitude").value = getLatitude(pos);
+        document.getElementById("prompt_longitude").value = getLongitude(pos);
+    }
+
     // Auslesen Breitengrad aus der Position
     var getLatitude = function (position) {
         return position.coords.latitude;
@@ -98,8 +107,8 @@ var gtaLocator = (function GtaLocator() {
 
         readme: "Dieses Objekt enthält 'öffentliche' Teile des Moduls.",
 
-        update: function () {
-            // TODO Hier Inhalt der Funktion "update" ergänzen
+        updateLocation: function () {
+            tryLocate(onSuccess, onError);
         }
 
     }; // ... Ende öffentlicher Teil
@@ -111,6 +120,6 @@ var gtaLocator = (function GtaLocator() {
  * des Skripts.
  */
 $(document).ready(function () {
-    alert("Hello World")
-    // TODO Hier den Aufruf für updateLocation einfügen
+    //alert("Hello World")
+    gtaLocator.updateLocation();
 });
