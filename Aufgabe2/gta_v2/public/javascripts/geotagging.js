@@ -57,6 +57,7 @@ var gtaLocator = (function GtaLocator() {
         document.getElementById("prompt_longitude").value = getLongitude(pos);
         document.getElementById("discovery_latitude").value = getLatitude(pos);
         document.getElementById("discovery_longitude").value = getLongitude(pos);
+        document.getElementById("result-img").src = getLocationMapSrc(getLatitude(pos),getLongitude(pos));
     }
 
     // Auslesen Breitengrad aus der Position
@@ -70,7 +71,7 @@ var gtaLocator = (function GtaLocator() {
     };
 
     // Hier Google Maps API Key eintragen
-    var apiKey = "YOUR API KEY HERE";
+    var apiKey = "AIzaSyCQlxM8GV82o-z7zlThpZKrm7M3djBkPRA";
 
     /**
      * Funktion erzeugt eine URL, die auf die Karte verweist.
