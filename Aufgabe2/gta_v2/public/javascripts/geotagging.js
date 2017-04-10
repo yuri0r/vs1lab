@@ -55,6 +55,8 @@ var gtaLocator = (function GtaLocator() {
     function onSuccess(pos) {
         document.getElementById("prompt_latitude").value = getLatitude(pos);
         document.getElementById("prompt_longitude").value = getLongitude(pos);
+        document.getElementById("discovery_latitude").value = getLatitude(pos);
+        document.getElementById("discovery_longitude").value = getLongitude(pos);
     }
 
     // Auslesen Breitengrad aus der Position
