@@ -24,12 +24,6 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-header {
-  color: #ffffff;
-  background-color: #808080;
-  padding: 10px;
-}
-
 footer {
     color: #ffffff;
     background-color: #808080;
@@ -105,6 +99,67 @@ a {
   list-style-type: none;
   margin: 0px;
 }
+
+/* Header */
+
+header {
+  color: #ffffff;
+  background-color: #3c763d;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#header_without_nav {
+  position: relative;
+}
+
+#header_img {
+  position:absolute;
+  left:0;
+}
+
+#heading {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 45px;
+}
+
+
+#top_nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#top_nav li {
+  text-align: center;
+  display: inline;
+  float: left;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  background-color: #286090;
+  padding: 5px;
+}
+
+#top_nav li a {
+  display: block;
+  width: 60px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#top_nav li:first-child {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+#top_nav li:last-child {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+/* End of header */
 
 
 
