@@ -1,6 +1,104 @@
 
-	<!-- TODO: HTML AUS AUFGABE2 HIERHER KOPIEREN UND DIE BEISPIEL-EINTRÄGE DER DISCOVERY-LISTE MIT DEN FOLGENDEN ZEILEN ERSETZEN -->
+<!DOCTYPE html>
+<html lang="en">
 
-	<% taglist.forEach(function(gtag) { %>
-		<li><%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>) <%= gtag.hashtag %> </li>
-	<% }); %>
+<head>
+	<meta charset="UTF-8">
+	<title>GeoTagApp</title>
+	<link rel='stylesheet' href='./stylesheets/style.css'/>
+</head>
+
+<body>
+
+<header class="col-12">
+	<img src="./images/location.png" width="100"
+		 alt="an image of a map and location">
+	<h1>GeoTagApp</h1>
+	<nav>
+		<a href="#">About</a> | <a href="#">Help</a> | <a
+				href="/">Home</a>
+	</nav>
+</header>
+
+<main class="col-12">
+
+	<section class="tagging col-3">
+		<h2>Tagging</h2>
+
+		<!-- ############### Aufgabe1a Form1 Start -->
+		<form id="tag-form" action="/tagging" method="post">
+
+			<fieldset>
+				<legend>Enter new GeoTag</legend>
+
+				<label for="prompt_latitude">latitude</label>
+				<input type="number" name="latitude" id="prompt_latitude" value="48.712312395434" required><br>
+
+				<label for="prompt_longitude">longitude</label>
+				<input type="number" name="longitude" id="prompt_longitude" value="9.123545" required><br>
+
+				<label for="prompt_name">name</label>
+				<input type="text" name="name" id="prompt_name" value="some name" maxlength="10" required><br>
+
+				<label for="prompt_hashtag">hashtag</label>
+				<input type="text" name="hashtag" id="prompt_hashtag"  value="# + max. 10 letters" pattern="#[a-zA-Z]+" maxlength="11"><br>
+
+				<input type="submit" value="submit" id="button_sumbit">
+			</fieldset>
+
+		</form>
+		<!-- ############### Aufgabe1a Form1 Ende -->
+
+	</section>
+
+	<section class="discovery col-9">
+		<h2>Discovery</h2>
+
+		<!-- ############### Aufgabe1a Form2 Start -->
+		<form id="filter-form" class="col-12" action="/discovery" method="post">
+
+			<fieldset >
+				<legend>Filter by Searchterm</legend>
+
+				<input type="text" name="search" id="prompt_search" value="some term">
+
+				<input type="submit" value="Apply" id="button_apply">
+
+				<input type="submit" value="Remove" id="button_remove">
+			</fieldset>
+
+			<input type="hidden" name="latitude" id="discovery_latitude">
+
+			<input type="hidden" name="longitude" id="discovery_longitude">
+		</form>
+		<!-- ############### Aufgabe1a Form2 Ende -->
+
+		<div class="taglist col-4">
+			<ul id="results">
+                <% taglist.forEach(function(gtag) { %>
+				<li><%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>) <%= gtag.hashtag %> </li>
+                <% }); %>
+			</ul>
+		</div>
+
+		<div class="tagmap col-8">
+			<img id="result-img" src="images/loading.gif" alt="a map with locations"/>
+			<div class="caption">Result map</div>
+		</div>
+
+	</section>
+
+</main>
+
+<footer class="col-12">
+	<span>2017 by LKIT</span>
+</footer>
+
+<!-- Load JavaScripts
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="./javascripts/geotagging.js"></script>
+
+</body>
+</html>
