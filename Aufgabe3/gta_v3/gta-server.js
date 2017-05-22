@@ -66,7 +66,7 @@ function addGeoTag(geoTag) {
 }
 
 function removeGeoTag(geoTag) {
-    geoTags.remove(geoTag)
+    geoTags.remove(geoTag);
 }
 
 /**
@@ -77,10 +77,8 @@ function removeGeoTag(geoTag) {
  *
  * Als Response wird das ejs-Template ohne Geo Tag Objekte gerendert.
  */
-
-// TODO: CODE ERGÄNZEN START
-app.get("/", function(request, response) {
-
+app.get("/", function(req, res) {
+     res.render('views/gta.ejs');
 });
 
 /**
