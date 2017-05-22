@@ -94,7 +94,15 @@ app.get("/", function(req, res) {
  * Die Objekte liegen in einem Standard Radius um die Koordinate (lat, lon).
  */
 
-// TODO: CODE ERGÄNZEN START
+app.post("/tagging", function(req, res) {
+    var latitude = req.latitude;
+    var longitude = req.longitude;
+    var name = req.name;
+    var hashtag = req.hashtag;
+
+    geoTags.add(new geoTag(latitude, longitude, name, hashtag));
+    // TODO
+});
 
 /**
  * Route mit Pfad '/discovery' für HTTP 'POST' Requests.
@@ -108,7 +116,9 @@ app.get("/", function(req, res) {
  * Falls 'term' vorhanden ist, wird nach Suchwort gefiltert.
  */
 
-// TODO: CODE ERGÄNZEN
+app.post("/discovery", function(req, res) {
+    // TODO
+});
 
 /**
  * Setze Port und speichere in Express.
