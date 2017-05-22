@@ -13,6 +13,7 @@ var http = require('http');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var express = require('express');
+var router = express.Router();
 
 var app = express();
 app.use(logger('dev'));
@@ -28,7 +29,7 @@ app.set('view engine', 'ejs');
  * Teste das Ergebnis im Browser unter 'http://localhost:3000/'.
  */
 
-app.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
     res.send('hallo');
 });
 
