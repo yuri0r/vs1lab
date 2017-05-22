@@ -28,7 +28,7 @@ app.set('view engine', 'ejs');
  * Teste das Ergebnis im Browser unter 'http://localhost:3000/'.
  */
 
-app.get('/', function(req, res, next) {
+app.use('/', function(req, res, next) {
     res.send('hallo');
 });
 
