@@ -28,9 +28,10 @@ app.set('view engine', 'ejs');
  * Teste das Ergebnis im Browser unter 'http://localhost:3000/'.
  */
 
-app.use(express.static('public'));
+
 
 app.get('/', function(req, res, next) {
+    app.use(express.static('public'));
     res.send('Einstiegsseite!');
 });
 
