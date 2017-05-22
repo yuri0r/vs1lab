@@ -30,7 +30,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(req, res, next) {
     res.send('hallo');
-}
+});
 
 /**
  * Konstruktor für GeoTag Objekte.
