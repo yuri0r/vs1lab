@@ -30,14 +30,17 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname +'/public'));
 
-
-
 /**
  * Konstruktor für GeoTag Objekte.
  * GeoTag Objekte sollen min. alle Felder des 'tag-form' Formulars aufnehmen.
  */
 
-// TODO: CODE ERGÄNZEN
+function geoTag(latitude, longitude, name, hashtag) {
+    this.latitude = latitude;
+    this.longitude = longitude;
+    this.name = name;
+    this.hashtag = hashtag;
+}
 
 /**
  * Modul für 'In-Memory'-Speicherung von GeoTags mit folgenden Komponenten:
@@ -48,7 +51,23 @@ app.use(express.static(__dirname +'/public'));
  * - Funktion zum Löschen eines Geo Tags.
  */
 
-// TODO: CODE ERGÄNZEN
+var geoTags;
+
+function searchGeoTagByRadius(latitude, longitude, radius) {
+    //TODO
+}
+
+function searchGeoTagByName(name) {
+    //TODO
+}
+
+function addGeoTag(geoTag) {
+    geoTags.add(geoTag);
+}
+
+function removeGeoTag(geoTag) {
+    geoTags.remove(geoTag)
+}
 
 /**
  * Route mit Pfad '/' für HTTP 'GET' Requests.
@@ -60,6 +79,9 @@ app.use(express.static(__dirname +'/public'));
  */
 
 // TODO: CODE ERGÄNZEN START
+app.get("/", function(request, response) {
+
+});
 
 /**
  * Route mit Pfad '/tagging' für HTTP 'POST' Requests.
