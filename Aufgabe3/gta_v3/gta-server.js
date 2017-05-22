@@ -13,7 +13,6 @@ var http = require('http');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var express = require('express');
-var router = express.Router();
 
 var app = express();
 app.use(logger('dev'));
