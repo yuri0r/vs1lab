@@ -28,7 +28,7 @@ app.set('view engine', 'ejs');
  * Teste das Ergebnis im Browser unter 'http://localhost:3000/'.
  */
 
-app.get('/', express.static('public'));
+app.use(express.static('public'));
 
 
 /**
