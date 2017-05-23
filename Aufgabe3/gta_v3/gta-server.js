@@ -51,7 +51,7 @@ function geoTag(latitude, longitude, name, hashtag) {
  * - Funktion zum Löschen eines Geo Tags.
  */
 
-var geoTags;
+app.locals.taglist;
 
 function searchGeoTagByRadius(latitude, longitude, radius) {
     //TODO
@@ -62,11 +62,11 @@ function searchGeoTagByName(name) {
 }
 
 function addGeoTag(geoTag) {
-    geoTags.add(geoTag);
+    taglist.add(geoTag);
 }
 
 function removeGeoTag(geoTag) {
-    geoTags.remove(geoTag);
+    taglist.remove(geoTag);
 }
 
 /**
