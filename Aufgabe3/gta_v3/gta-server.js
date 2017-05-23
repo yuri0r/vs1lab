@@ -52,7 +52,6 @@ function geoTag(latitude, longitude, name, hashtag) {
  */
 
 app.locals.taglist = [];
-addGeoTag(new geoTag(12.0000,12.0000,'bla','#asdasd'));
 
 function searchGeoTagByRadius(latitude, longitude, radius) {
     //TODO
@@ -63,12 +62,14 @@ function searchGeoTagByName(name) {
 }
 
 function addGeoTag(geoTag) {
-    taglist.add(geoTag);
+    app.locals.taglist.add(geoTag);
 }
 
 function removeGeoTag(geoTag) {
-    taglist.remove(geoTag);
+    app.locals.taglist.remove(geoTag);
 }
+
+addGeoTag(new geoTag(12.0000,12.0000,'bla','#asdasd'));
 
 /**
  * Route mit Pfad '/' für HTTP 'GET' Requests.
