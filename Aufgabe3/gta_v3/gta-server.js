@@ -51,7 +51,7 @@ function geoTag(latitude, longitude, name, hashtag) {
  * - Funktion zum Löschen eines Geo Tags.
  */
 
-app.locals.taglist = new {};
+app.locals.taglist = [];
 
 function searchGeoTagByRadius(latitude, longitude, radius) {
     //TODO
