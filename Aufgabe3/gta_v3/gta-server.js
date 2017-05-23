@@ -100,7 +100,7 @@ app.post("/tagging", function(req, res) {
     var name = req.name;
     var hashtag = req.hashtag;
 
-    geoTags.add(new geoTag(latitude, longitude, name, hashtag));
+    addGeoTag(new geoTag(latitude, longitude, name, hashtag));
     // TODO
 });
 
@@ -117,6 +117,9 @@ app.post("/tagging", function(req, res) {
  */
 
 app.post("/discovery", function(req, res) {
+    var search = req.search;
+    var latitude = req.latitude;
+    var longitude = req.longitude;
     // TODO
 });
 
