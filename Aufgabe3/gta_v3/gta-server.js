@@ -58,8 +58,13 @@ function searchGeoTagByRadius(latitude, longitude, radius) {
     //TODO
 }
 
-function searchGeoTagByName(name) {
-
+function searchGeoTagsByName(name) {
+    app.locals.taglist = [];
+    localTagList.forEach( function(element, index, localTagList){
+        if (localTagList[index].name.search(name) >= 0) {
+            app.locals.taglist.push(localTagList[index]);
+        }
+    });
 }
 
 function addGeoTag(geoTag) {
@@ -115,7 +120,6 @@ app.post("/tagging", function(req, res) {
     addGeoTag(new geoTag(latitude, longitude, name, hashtag));
 
     res.redirect('/');
-    //res.render(__dirname + '/views/gta.ejs');
 });
 
 /**
@@ -135,12 +139,7 @@ app.post("/discovery", function(req, res) {
     var latitude = req.body.latitude;
     var longitude = req.body.longitude;
 
-    app.locals.taglist = [];
-    localTagList.forEach( function(element, index, localTagList){
-        if (localTagList[index].name.search(search) >= 0) {
-            app.locals.taglist.push(localTagList[index]);
-        }
-    });
+    searchGeoTagsByName(search);
 
     res.render(__dirname + '/views/gta.ejs');
 });
