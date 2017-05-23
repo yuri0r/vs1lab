@@ -73,7 +73,7 @@ function removeGeoTag(geoTag) {
     }
 }
 
-addGeoTag(new geoTag(12.0000,12.0000,'bla','#asdasd'));
+// addGeoTag(new geoTag(12.0000,12.0000,'bla','#asdasd'));
 
 /**
  * Route mit Pfad '/' für HTTP 'GET' Requests.
@@ -101,13 +101,14 @@ app.get("/", function(req, res) {
  */
 
 app.post("/tagging", function(req, res) {
-    var latitude = req.latitude;
-    var longitude = req.longitude;
-    var name = req.name;
-    var hashtag = req.hashtag;
+    var latitude = req.body.latitude;
+    var longitude = req.body.longitude;
+    var name = req.body.name;
+    var hashtag = req.body.hashtag;
 
     addGeoTag(new geoTag(latitude, longitude, name, hashtag));
-    // TODO
+
+    res.render(__dirname + '/views/gta.ejs');
 });
 
 /**
