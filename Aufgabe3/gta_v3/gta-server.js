@@ -139,9 +139,13 @@ app.post("/discovery", function(req, res) {
     var latitude = req.body.latitude;
     var longitude = req.body.longitude;
 
-    searchGeoTagsByName(search);
-
-    res.render(__dirname + '/views/gta.ejs');
+    if (req.body.hasOwnProperty("Apply")) {
+        searchGeoTagsByName(search);
+        res.render(__dirname + '/views/gta.ejs');
+    } else if (req.body.hasOwnProperty("Remove")) {
+        // TODO remove
+        res.redirect('/');
+    }
 });
 
 /**
