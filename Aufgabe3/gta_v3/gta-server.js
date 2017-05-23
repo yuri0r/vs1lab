@@ -90,7 +90,7 @@ app.get("/", function(req, res) {
         app.locals.taglist.push(localTagList[index]);
     });
 
-     res.render(__dirname + '/views/gta.ejs');
+    res.render(__dirname + '/views/gta.ejs');
 });
 
 /**
@@ -134,7 +134,15 @@ app.post("/discovery", function(req, res) {
     var search = req.body.search;
     var latitude = req.body.latitude;
     var longitude = req.body.longitude;
-    // TODO
+
+    app.locals.taglist = [];
+    localTagList.forEach( function(element, index, localTagList){
+        if (localTagList[index].name.search(search) >= 0) {
+            app.locals.taglist.push(localTagList[index]);
+        }
+    });
+
+    res.render(__dirname + '/views/gta.ejs');
 });
 
 /**
