@@ -85,6 +85,11 @@ function removeGeoTag(geoTag) {
  * Als Response wird das ejs-Template ohne Geo Tag Objekte gerendert.
  */
 app.get("/", function(req, res) {
+    app.locals.taglist = [];
+    localTagList.forEach( function(element, index, localTagList){
+        app.locals.taglist.push(localTagList[index]);
+    });
+
      res.render(__dirname + '/views/gta.ejs');
 });
 
@@ -108,11 +113,6 @@ app.post("/tagging", function(req, res) {
     var hashtag = req.body.hashtag;
 
     addGeoTag(new geoTag(latitude, longitude, name, hashtag));
-
-    app.locals.taglist = [];
-    localTagList.forEach( function(element, index, localTagList){
-        app.locals.taglist.push(localTagList[index]);
-    });
 
     res.redirect('/');
     //res.render(__dirname + '/views/gta.ejs');
