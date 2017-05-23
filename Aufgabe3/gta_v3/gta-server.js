@@ -62,11 +62,15 @@ function searchGeoTagByName(name) {
 }
 
 function addGeoTag(geoTag) {
-    app.locals.taglist.add(geoTag);
+    app.locals.taglist.push(geoTag);
 }
 
 function removeGeoTag(geoTag) {
-    app.locals.taglist.remove(geoTag);
+    var index = app.locals.taglist.indexOf(geoTag);
+
+    if (index >= 0) {
+        app.locals.taglist.splice(index, 1);
+    }
 }
 
 addGeoTag(new geoTag(12.0000,12.0000,'bla','#asdasd'));
