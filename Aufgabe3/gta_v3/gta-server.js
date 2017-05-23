@@ -114,7 +114,8 @@ app.post("/tagging", function(req, res) {
         app.locals.taglist.push(localTagList[index]);
     });
 
-    res.render(__dirname + '/views/gta.ejs');
+    res.redirect('/');
+    //res.render(__dirname + '/views/gta.ejs');
 });
 
 /**
