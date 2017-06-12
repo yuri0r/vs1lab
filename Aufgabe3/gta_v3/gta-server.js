@@ -52,7 +52,7 @@ function geoTag(latitude, longitude, name, hashtag) {
  */
 
 app.locals.taglist = [];
-var localTagList = [];
+var serverTagList = [];
 
 function searchGeoTagByRadius(latitude, longitude, radius) {
     //TODO
@@ -60,7 +60,7 @@ function searchGeoTagByRadius(latitude, longitude, radius) {
 
 function searchGeoTagsByName(name) {
     app.locals.taglist = [];
-    localTagList.forEach( function(element, index, localTagList){
+    serverTagList.forEach( function(element, index, localTagList){
         if (localTagList[index].name.search(name) >= 0) {
             app.locals.taglist.push(localTagList[index]);
         }
@@ -68,14 +68,14 @@ function searchGeoTagsByName(name) {
 }
 
 function addGeoTag(geoTag) {
-    localTagList.push(geoTag);
+    serverTagList.push(geoTag);
 }
 
 function removeGeoTag(geoTag) {
-    var index = localTagList.indexOf(geoTag);
+    var index = serverTagList.indexOf(geoTag);
 
     if (index >= 0) {
-        localTagList.splice(index, 1);
+        serverTagList.splice(index, 1);
     }
 }
 
@@ -91,7 +91,7 @@ function removeGeoTag(geoTag) {
  */
 app.get("/", function(req, res) {
     app.locals.taglist = [];
-    localTagList.forEach( function(element, index, localTagList){
+    serverTagList.forEach( function(element, index, localTagList){
         app.locals.taglist.push(localTagList[index]);
     });
 
