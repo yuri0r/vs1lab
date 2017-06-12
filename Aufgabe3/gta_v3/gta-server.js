@@ -135,12 +135,12 @@ app.post("/tagging", function(req, res) {
  */
 
 app.post("/discovery", function(req, res) {
-    var search = req.body.search;
+    var name = req.body.search;
     var latitude = req.body.latitude;
     var longitude = req.body.longitude;
 
     if (req.body.hasOwnProperty("Apply")) {
-        searchGeoTagsByName(search);
+        searchGeoTagsByName(name);
         res.render(__dirname + '/views/gta.ejs');
     } else if (req.body.hasOwnProperty("Remove")) {
         // TODO remove
