@@ -72,14 +72,6 @@ function addGeoTag(geoTag) {
     serverTagList.push(geoTag);
 }
 
-function removeGeoTag(geoTag) {
-    var index = serverTagList.indexOf(geoTag);
-
-    if (index >= 0) {
-        serverTagList.splice(index, 1);
-    }
-}
-
 // addGeoTag(new geoTag(12.0000,12.0000,'bla','#asdasd'));
 
 /**
@@ -140,12 +132,9 @@ app.post("/discovery", function(req, res) {
     var latitude = req.body.latitude;
     var longitude = req.body.longitude;
 
-    if (req.body.hasOwnProperty("Apply")) {
+    if ("Apply" in req.body) {
         searchGeoTagsByName(name);
         res.render(__dirname + '/views/gta.ejs');
-    } else if (req.body.hasOwnProperty("Remove")) {
-        // TODO remove
-        res.redirect('/');
     }
 });
 
