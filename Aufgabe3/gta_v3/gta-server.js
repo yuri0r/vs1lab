@@ -134,8 +134,8 @@ app.post("/discovery", function(req, res) {
 
     if ("Apply" in req.body) {
         searchGeoTagsByName(name);
-        if(latitude) app.locals.latitude = latitude;
-        if(longitude) app.locals.longitude = longitude;
+        app.locals.latitude = latitude;
+        app.locals.longitude = longitude;
         res.render(__dirname + '/views/gta.ejs');
     }
 });
