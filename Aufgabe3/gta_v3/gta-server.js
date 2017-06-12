@@ -8,11 +8,12 @@
  * Definiere Modul Abhängigkeiten und erzeuge Express app.
  */
 
-var http = require('http');
+var https = require('https');
 //var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var express = require('express');
+var fs = require('fs');
 
 var app = express();
 app.use(logger('dev'));
@@ -152,17 +153,20 @@ app.post("/discovery", function(req, res) {
  * Setze Port und speichere in Express.
  */
 
-var port = 3000;
-app.set('port', port);
-
 /**
- * Erstelle HTTP Server
+ * Erstelle HTTPS Server
  */
 
-var server = http.createServer(app);
+var options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/yuri0r.ddns.net/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/yuri0r.ddns.net/cert.pem'),
+  ca: fs.readFileSync('/etc/letsencrypt/live/yuri0r.ddns.net/chain.pem')
+}
+
+var server = https.createServer(options, app);
 
 /**
  * Horche auf dem Port an allen Netzwerk-Interfaces
  */
 
-server.listen(port);
+server.listen(443);
