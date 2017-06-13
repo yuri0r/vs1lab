@@ -53,6 +53,8 @@ function geoTag(latitude, longitude, name, hashtag) {
  */
 
 app.locals.taglist = [];
+app.locals.latitude = undefined;
+app.locals.longitude = undefined;
 var serverTagList = [];
 
 function searchGeoTagByRadius(latitude, longitude, radius) {
