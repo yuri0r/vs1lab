@@ -52,9 +52,6 @@ function geoTag(latitude, longitude, name, hashtag) {
  * - Funktion zum Löschen eines Geo Tags.
  */
 
-app.locals.taglist = [];
-app.locals.latitude = undefined;
-app.locals.longitude = undefined;
 var serverTagList = [];
 
 function searchGeoTagByRadius(latitude, longitude, radius) {
@@ -85,12 +82,19 @@ function addGeoTag(geoTag) {
  * Als Response wird das ejs-Template ohne Geo Tag Objekte gerendert.
  */
 app.get("/", function(req, res) {
-    app.locals.taglist = [];
+    var filteredTags = [];
     serverTagList.forEach( function(element, index, localTagList){
-        app.locals.taglist.push(localTagList[index]);
+        filteredTags.push(localTagList[index]);
     });
 
-    res.render(__dirname + '/views/gta.ejs');
+    var latitude = null;
+    var longitude = null;
+
+    res.render(__dirname + '/views/gta.ejs', {
+        taglist: filteredTags,
+        latitude: latitude,
+        longitude: longitude
+    });
 });
 
 /**
@@ -140,7 +144,7 @@ app.post("/discovery", function(req, res) {
 
     if ("Apply" in req.body) {
         searchGeoTagsByName(name);
-        res.render(__dirname + '/views/gta.ejs');
+        res.redirect('/');
     }
 });
 
