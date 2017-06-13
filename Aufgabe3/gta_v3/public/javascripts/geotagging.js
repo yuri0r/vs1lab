@@ -53,10 +53,10 @@ var gtaLocator = (function GtaLocator() {
     }
 
     function onSuccess(pos) {
-        document.getElementById("prompt_latitude").value = getLatitude(pos);
-        document.getElementById("prompt_longitude").value = getLongitude(pos);
-        document.getElementById("discovery_latitude").value = getLatitude(pos);
-        document.getElementById("discovery_longitude").value = getLongitude(pos);
+        document.getElementById("prompt_latitude").value = getLatitude(pos).toFixed(3);
+        document.getElementById("prompt_longitude").value = getLongitude(pos).toFixed(3);
+        document.getElementById("discovery_latitude").value = getLatitude(pos).toFixed(3);
+        document.getElementById("discovery_longitude").value = getLongitude(pos).toFixed(3);
         document.getElementById("result-img").src = getLocationMapSrc(getLatitude(pos),getLongitude(pos));
     }
 
