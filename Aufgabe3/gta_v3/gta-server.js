@@ -85,6 +85,11 @@ app.get("/", function(req, res) {
     var latitude = null;
     var longitude = null;
 
+    if(req.body.latitude && req.body.longitude) {
+        latitude = req.body.latitude;
+        longitude = req.body.longitude;
+    }
+
     res.render(__dirname + '/views/gta.ejs', {
         taglist: serverTagList,
         latitude: latitude,
