@@ -32,10 +32,10 @@
 				<legend>Enter new GeoTag</legend>
 
 				<label for="prompt_latitude">latitude</label>
-				<input type="number" step="0.00001" name="latitude" id="prompt_latitude" placeholder="48.71284" required><br>
+				<input type="number" step="0.00001" name="latitude" id="prompt_latitude" placeholder="48.71284" value="<% if (longitude!==undefined) { %><%=longitude%><% } %>" required><br>
 
 				<label for="prompt_longitude">longitude</label>
-				<input type="number" step="0.00001" name="longitude" id="prompt_longitude" placeholder="9.12355" required><br>
+				<input type="number" step="0.00001" name="longitude" id="prompt_longitude" placeholder="9.12355" value="<% if (longitude!==undefined) { %><%=longitude%><% } %>" required><br>
 
 				<label for="prompt_name">name</label>
 				<input type="text" name="name" id="prompt_name" placeholder="some name" maxlength="10" required><br>
@@ -66,9 +66,9 @@
 
 			</fieldset>
 
-			<input type="hidden" name="latitude" id="discovery_latitude">
+			<input type="hidden" name="latitude" id="discovery_latitude" value="<% if (longitude!==undefined) { %><%=longitude%><% } %>">
 
-			<input type="hidden" name="longitude" id="discovery_longitude">
+			<input type="hidden" name="longitude" id="discovery_longitude" value="<% if (longitude!==undefined) { %><%=longitude%><% } %>">
 		</form>
 		<!-- ############### Aufgabe1a Form2 Ende -->
 

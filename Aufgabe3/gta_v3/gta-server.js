@@ -129,8 +129,12 @@ app.post("/tagging", function(req, res) {
 
 app.post("/discovery", function(req, res) {
     var name = req.body.search;
-    var latitude = req.body.latitude;
-    var longitude = req.body.longitude;
+
+    if(req.body.latitude && req.body.longitude) {
+        app.locals.latitude = req.body.latitude;
+        app.locals.longitude = req.body.longitude;
+    }
+
 
     if ("Apply" in req.body) {
         searchGeoTagsByName(name);
