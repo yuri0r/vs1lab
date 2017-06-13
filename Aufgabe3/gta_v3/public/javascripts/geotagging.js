@@ -23,6 +23,7 @@ var gtaLocator = (function GtaLocator() {
      * Bei Fehler Callback 'onerror' mit Meldung.
      * Callback Funktionen als Parameter übergeben.
      */
+
     var tryLocate = function (onsuccess, onerror) {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(onsuccess, function (error) {
@@ -124,8 +125,5 @@ var gtaLocator = (function GtaLocator() {
  */
 $(document).ready(function () {
     //alert("Hello World")
-
-    if(document.getElementById("discovery_latitude").innerHTML.length == 0) {
-        gtaLocator.updateLocation();
-    }
+    gtaLocator.updateLocation();
 });
