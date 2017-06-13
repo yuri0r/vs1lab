@@ -125,7 +125,7 @@ var gtaLocator = (function GtaLocator() {
 $(document).ready(function () {
     //alert("Hello World")
 
-    if(document.getElementById("discovery_latitude").value.length == 0) {
+    if(document.getElementById("discovery_latitude").innerHTML.length == 0) {
         gtaLocator.updateLocation();
     }
 });
