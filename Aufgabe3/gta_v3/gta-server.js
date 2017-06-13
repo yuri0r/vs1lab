@@ -82,16 +82,11 @@ function addGeoTag(geoTag) {
  * Als Response wird das ejs-Template ohne Geo Tag Objekte gerendert.
  */
 app.get("/", function(req, res) {
-    var filteredTags = [];
-    serverTagList.forEach( function(element, index, localTagList){
-        filteredTags.push(localTagList[index]);
-    });
-
     var latitude = null;
     var longitude = null;
 
     res.render(__dirname + '/views/gta.ejs', {
-        taglist: filteredTags,
+        taglist: serverTagList,
         latitude: latitude,
         longitude: longitude
     });
@@ -141,10 +136,23 @@ app.post("/discovery", function(req, res) {
         app.locals.longitude = req.body.longitude;
     }
 
+    var filteredTags = [];
+    serverTagList.forEach( function(element, index, localTagList){
+        if (localTagList[index].name.search(name) >= 0) {
+            filteredTags.push(localTagList[index]);
+        }
+    });
+
+    var latitude = null;
+    var longitude = null;
 
     if ("Apply" in req.body) {
         searchGeoTagsByName(name);
-        res.redirect('/');
+        res.render(__dirname + '/views/gta.ejs', {
+            taglist: filteredTags,
+            latitude: latitude,
+            longitude: longitude
+        });
     }
 });
 
