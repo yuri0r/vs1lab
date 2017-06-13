@@ -131,20 +131,20 @@ app.post("/tagging", function(req, res) {
 app.post("/discovery", function(req, res) {
     var name = req.body.search;
 
+    var latitude = null;
+    var longitude = null;
+
     if(req.body.latitude && req.body.longitude) {
-        app.locals.latitude = req.body.latitude;
-        app.locals.longitude = req.body.longitude;
+        latitude = req.body.latitude;
+        longitude = req.body.longitude;
     }
 
     var filteredTags = [];
-    serverTagList.forEach( function(element, index, localTagList){
-        if (localTagList[index].name.search(name) >= 0) {
-            filteredTags.push(localTagList[index]);
+    serverTagList.forEach( function(element, index, serverTagList){
+        if (serverTagList[index].name.search(name) >= 0) {
+            filteredTags.push(serverTagList[index]);
         }
     });
-
-    var latitude = null;
-    var longitude = null;
 
     if ("Apply" in req.body) {
         searchGeoTagsByName(name);
