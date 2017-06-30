@@ -99,6 +99,8 @@ app.get("/", function(req, res) {
         longitude = req.body.longitude;
     }
 
+    var distance = 5000;
+
     serverTagList.forEach( function(element, index, localTagList){
 
             if(longitude && latitude) {
@@ -166,15 +168,25 @@ app.post("/discovery", function(req, res) {
         longitude = req.body.longitude;
     }
 
+    var distance = 5000;
+
     var filteredTags = [];
-    serverTagList.forEach( function(element, index, serverTagList){
-        if (serverTagList[index].name.search(name) >= 0) {
-            filteredTags.push(serverTagList[index]);
+    serverTagList.forEach( function(element, index, localTagList){
+        if (localTagList[index].name.search(name) >= 0) {
+
+            if(longitude && latitude) {
+                var longDist = Math.pow(localTagList[index].longitude - longitude,2);
+                var latDist = Math.pow(localTagList[index].latitude - latitude,2);
+                if (distance >= Math.sqrt(latDist + longDist)) {
+                    filteredTags.push(localTagList[index]);
+                }
+            } else {
+                filteredTags.push(localTagList[index]);
+            }
         }
     });
 
     if ("Apply" in req.body) {
-        searchGeoTagsByName(name, req.body.longitude, req.body.latitude);
         res.render(__dirname + '/views/gta.ejs', {
             taglist: filteredTags,
             latitude: latitude,
