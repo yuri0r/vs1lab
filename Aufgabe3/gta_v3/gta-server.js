@@ -92,14 +92,30 @@ function addGeoTag(geoTag) {
 app.get("/", function(req, res) {
     var latitude = null;
     var longitude = null;
+    var filteredTags = [];
 
     if(req.body.latitude && req.body.longitude) {
         latitude = req.body.latitude;
         longitude = req.body.longitude;
     }
 
+    serverTagList.forEach( function(element, index, localTagList){
+        if (localTagList[index].name.search(name) >= 0) {
+
+            if(longitude && latitude) {
+                var longDist = Math.pow(localTagList[index].longitude - longitude,2);
+                var latDist = Math.pow(localTagList[index].latitude - latitude,2);
+                if (distance >= Math.sqrt(latDist + longDist)) {
+                    filteredTags.push(localTagList[index]);
+                }
+            } else {
+                filteredTags.push(localTagList[index]);
+            }
+        }
+    });
+
     res.render(__dirname + '/views/gta.ejs', {
-        taglist: serverTagList,
+        taglist: filteredTags,
         latitude: latitude,
         longitude: longitude
     });
