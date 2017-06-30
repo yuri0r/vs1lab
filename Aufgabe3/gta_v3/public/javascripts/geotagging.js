@@ -112,11 +112,13 @@ var gtaLocator = (function GtaLocator() {
         readme: "Dieses Objekt enthält 'öffentliche' Teile des Moduls.",
 
         updateLocation: function () {
-        	if(!document.getElementById("discovery_latitude").value) {
-			tryLocate(onSuccess, onError);
-		} else {
-document.getElementById("result-img").src = getLocationMapSrc(document.getElementById("prompt_latitude").value,document.getElementById("prompt_longitude").value);
-		}	
+        	if (!document.getElementById("discovery_latitude").value) {
+			    tryLocate(onSuccess, onError);
+            } else {
+        	    var longitude = document.getElementById("prompt_longitude").value;
+        	    var latitude = document.getElementById("prompt_latitude").value;
+                document.getElementById("result-img").src = getLocationMapSrc(latitude,longitude);
+            }
 	}
 }; // ... Ende öffentlicher Teil
 })();
