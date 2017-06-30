@@ -54,15 +54,28 @@ function geoTag(latitude, longitude, name, hashtag) {
 
 var serverTagList = [];
 
-function searchGeoTagByRadius(latitude, longitude, radius) {
-    //TODO
-}
-
-function searchGeoTagsByName(name) {
+function searchGeoTagsByName(name, long, lat) {
     app.locals.taglist = [];
+
+    var latitude = null;
+    var longitude = null;
+    var distance = 5000;
+
     serverTagList.forEach( function(element, index, localTagList){
         if (localTagList[index].name.search(name) >= 0) {
-            app.locals.taglist.push(localTagList[index]);
+
+            if(long && lang) {
+                latitude = lat;
+                longitude = long;
+
+                var longDist = Math.pow(localTagList[index].longitude - longitude,2);
+                var latDist = Math.pow(localTagList[index].latitude - latitude,2);
+                if (distance >= Math.sqrt(latDist + longDist)) {
+                    app.locals.taglist.push(localTagList[index]);
+                }
+            } else {
+                app.locals.taglist.push(localTagList[index]);
+            }
         }
     });
 }
@@ -152,7 +165,7 @@ app.post("/discovery", function(req, res) {
     });
 
     if ("Apply" in req.body) {
-        searchGeoTagsByName(name);
+        searchGeoTagsByName(name, req.body.longitude, req.body.latitude);
         res.render(__dirname + '/views/gta.ejs', {
             taglist: filteredTags,
             latitude: latitude,
