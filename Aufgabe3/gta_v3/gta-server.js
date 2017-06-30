@@ -54,20 +54,15 @@ function geoTag(latitude, longitude, name, hashtag) {
 
 var serverTagList = [];
 
-function searchGeoTagsByName(name, long, lat) {
+function searchGeoTagsByName(name, longitude, latitude) {
     app.locals.taglist = [];
 
-    var latitude = null;
-    var longitude = null;
     var distance = 5000;
 
     serverTagList.forEach( function(element, index, localTagList){
         if (localTagList[index].name.search(name) >= 0) {
 
-            if(long && lat) {
-                latitude = lat;
-                longitude = long;
-
+            if(longitude && latitude) {
                 var longDist = Math.pow(localTagList[index].longitude - longitude,2);
                 var latDist = Math.pow(localTagList[index].latitude - latitude,2);
                 if (distance >= Math.sqrt(latDist + longDist)) {
