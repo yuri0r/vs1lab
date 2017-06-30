@@ -100,7 +100,6 @@ app.get("/", function(req, res) {
     }
 
     serverTagList.forEach( function(element, index, localTagList){
-        if (localTagList[index].name.search(name) >= 0) {
 
             if(longitude && latitude) {
                 var longDist = Math.pow(localTagList[index].longitude - longitude,2);
@@ -111,7 +110,6 @@ app.get("/", function(req, res) {
             } else {
                 filteredTags.push(localTagList[index]);
             }
-        }
     });
 
     res.render(__dirname + '/views/gta.ejs', {
