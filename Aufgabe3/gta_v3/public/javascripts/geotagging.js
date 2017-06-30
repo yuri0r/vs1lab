@@ -114,7 +114,9 @@ var gtaLocator = (function GtaLocator() {
         updateLocation: function () {
         	if(!document.getElementById("discovery_latitude").value) {
 			tryLocate(onSuccess, onError);
+			console.log("getting location");
 		} else {
+			console.log("getting map from Location");
 document.getElementById("result-img").src = getLocationMapSrc(document.getElementById("prompt_latitude").value,document.getElementById("prompt_longitude").value);
 		}	
 	}
