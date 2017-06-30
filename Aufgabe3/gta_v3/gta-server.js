@@ -103,15 +103,15 @@ app.get("/", function(req, res) {
 
     serverTagList.forEach( function(element, index, localTagList){
 
-            if(longitude && latitude) {
-                var longDist = Math.pow(localTagList[index].longitude - longitude,2);
-                var latDist = Math.pow(localTagList[index].latitude - latitude,2);
-                if (distance >= Math.sqrt(latDist + longDist)) {
-                    filteredTags.push(localTagList[index]);
-                }
-            } else {
+        if(longitude && latitude) {
+            var longDist = Math.pow(localTagList[index].longitude - longitude,2);
+            var latDist = Math.pow(localTagList[index].latitude - latitude,2);
+            if (distance >= Math.sqrt(latDist + longDist)) {
                 filteredTags.push(localTagList[index]);
             }
+        } else {
+            filteredTags.push(localTagList[index]);
+        }
     });
 
     res.render(__dirname + '/views/gta.ejs', {
@@ -142,7 +142,7 @@ app.post("/tagging", function(req, res) {
 
     addGeoTag(new geoTag(latitude, longitude, name, hashtag));
 
-    res.redirect('/');
+    res.redirect('/discovery');
 });
 
 /**
