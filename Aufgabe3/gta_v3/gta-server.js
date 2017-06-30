@@ -142,7 +142,7 @@ app.post("/tagging", function(req, res) {
 
     addGeoTag(new geoTag(latitude, longitude, name, hashtag));
 
-    res.redirect('/discovery');
+    res.redirect('/');
 });
 
 /**
