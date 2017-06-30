@@ -64,7 +64,7 @@ function searchGeoTagsByName(name, long, lat) {
     serverTagList.forEach( function(element, index, localTagList){
         if (localTagList[index].name.search(name) >= 0) {
 
-            if(long && lang) {
+            if(long && lat) {
                 latitude = lat;
                 longitude = long;
 
